@@ -2,8 +2,8 @@
 function getParameter(key){
     var result = [],
         tmp = [];
-    console.log(window.location.search);
-    var url = new URL(window.location.search);
+    console.log(window.location.href);
+    var url = new URL(window.location.href);
     console.log(url);
     
     return  url.searchParams.get(key);
@@ -24,8 +24,8 @@ var keySearch =["as",
    "zip"];
 
 $(document).ready(function(){
-    console.log(window.location);
-//    parseQuery();
+    console.log(window.location.href);
+   parseQuery();
 });
 
 function parseQuery(){
