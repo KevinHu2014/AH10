@@ -6,8 +6,9 @@ function getParameter(){
         .split("&")
         .forEach(function (item) {
           tmp = item.split("=");
-        //   if (tmp[0] === parameterName) 
-          result.push(tmp[0]:tmp[1]);  
+        //   if (tmp[0] === parameterName)
+          var key = tmp[0], name = tmp[1]; 
+          result.push({key:name});  
             // decodeURIComponent(tmp[1]);
 
         });
