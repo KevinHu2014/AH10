@@ -1,19 +1,34 @@
-function getParameter(){
+
+function getParameter(key){
     var result = [],
         tmp = [];
-    window.location.search
-        .substr(1)
-        .split("&")
-        .forEach(function (item) {
-          tmp = item.split("=");
-        //   if (tmp[0] === parameterName)
-          var key = tmp[0], name = tmp[1]; 
-          result.push({key:key, name:name});  
-            // decodeURIComponent(tmp[1]);
-        });
-    return result;
+    // console.log
+    var url = new URL(window.location.search);
+    console.log(url);
+    
+    return  url.searchParams.get(key);
 }
+var keySearch =["as",
+   "city",
+   "country",
+   "countryCode",
+   "isp",
+   "lat",
+   "lon",
+   "org",
+   "query",
+   "region",
+   "regionName",
+   "status",
+   "timezone",
+   "zip"];
 
 $(document).ready(function(){
-   console.log( getParameter());
+   parseQuery();
 });
+
+function parseQuery(){
+    keySearch.forEach(function(key){
+        console.log(key, getParameter(key));
+    });
+}
