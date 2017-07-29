@@ -1,5 +1,6 @@
 /* element that contains the map. */
 
+
 #map {
  /*height: 400px;*/
  height: 90vh;
@@ -36,6 +37,9 @@ body {
  padding: 0;
 }
 
+.container-fluid {
+    padding: 0px;
+}
 
 .chat
 {
