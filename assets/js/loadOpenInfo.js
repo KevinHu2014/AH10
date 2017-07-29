@@ -1,31 +1,22 @@
-
+'use strict'
+const taipei = {lat: 25.09108, lng: 121.5598};
 function getParameter(key){
     var result = [],
         tmp = [];
-    console.log(window.location.href);
     var url = new URL(window.location.href);
-    console.log(url);
-    
     return  url.searchParams.get(key);
 }
-var keySearch =["as",
-   "city",
-   "country",
-   "countryCode",
-   "isp",
+var mark1 = {};
+var initialLoctaion = {};
+var keySearch =[
+    "memberCondition",
    "lat",
-   "lon",
-   "org",
-   "query",
-   "region",
-   "regionName",
-   "status",
-   "timezone",
-   "zip"];
+   "lon" 
+];
 
 $(document).ready(function(){
-    console.log(window.location.href);
    parseQuery();
+   getGEOLocation();
 });
 
 function parseQuery(){
@@ -33,3 +24,37 @@ function parseQuery(){
         console.log(key, getParameter(key));
     });
 }
+
+function getGEOLocation(){
+    initialLoctaion = taipei;
+    // successful function
+  function success(position){
+    let {latitude, longitude} = position.coords;
+    console.log(latitude, longitude);
+    initialLoctaion = {lat: Number(latitude),lng: Number(longitude)};
+    mark1 = new google.maps.Marker({
+      position: initialLoctaion,
+      map: map      
+    });
+    map.setCenter(initialLoctaion);
+  }
+   // error function
+  function error(){
+    console.log('default loc');
+    
+  }
+   //如果有geolocation 物件
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(success, error);
+  }
+}
+
+// 設定Marker1
+function setMark(location, map){
+  mark1 = new google.maps.Marker({
+    position: location,
+    map: map
+  });
+  map.setCenter(location);
+}
+
