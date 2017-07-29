@@ -29,6 +29,7 @@ $(document).ready(function(){
  */
 function messageToSingle(){
     console.log($('#btn-input').text());
+    console.log(window.emailContent);
     $.ajax({
         url:addSingleMessagesUrl,
         type: 'POST',
