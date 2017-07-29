@@ -1,7 +1,7 @@
 function getParameter(){
     var result = [],
         tmp = [];
-    location.search
+    window.location.search
         .substr(1)
         .split("&")
         .forEach(function (item) {
