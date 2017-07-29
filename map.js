@@ -204,3 +204,6 @@ function initMap() {
     infowindow.open(map, marker);
   });
 }
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover(); 
+});
