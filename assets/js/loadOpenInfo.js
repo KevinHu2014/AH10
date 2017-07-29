@@ -34,8 +34,8 @@ const GetUserLocURL = `${baseUrl}queryUserLoc`;
 function getChatList() {
   $.ajax({
     method: 'GET',
-    url: GetUserLocURL,
-    data: {id: currentUserObj.memberCondition},
+    url: GetUserLocURL+"?id="+currentUserObj.memberCondition,
+    // data: {id+currentUserObj.memberCondition},
     success: function(data){
       console.log(data);
     },
