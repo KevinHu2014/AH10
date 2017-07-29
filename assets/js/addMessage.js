@@ -57,8 +57,8 @@ function getSingleMessages(){
         url:getSingleMessagesUrl,
         type: 'GET',
         data: {
-            fromEmail:"me@gmail.com",
-            toEmail:"yuanyu90221@gmail.com"
+            fromEmail:"yuanyu_90221@hotmail.com",
+            toEmail:"tommy770221g@hotmail.com"
         },
         success: function(data){
             console.log(data);
@@ -79,7 +79,7 @@ function getAllMessages(){
         url:getAllMessageUrl,
         type:'GET',
         data: {
-            fromEmail:"me@gmail.com"
+            fromEmail:"yuanyu_90221@hotmail.com"
         },
         success: function(data){
             console.log('multiple:',data);
@@ -95,8 +95,8 @@ function addAllMessages(){
         url:addAllMessageUrl,
         type:'POST',
         data: {
-            fromEmail:"me@gmail.com",
-            toEmail:'test@gmail.com',
+            fromEmail:"yuanyu_90221@hotmail.com",
+            toEmail:'tommy770221@hotmail.com',
             lat:10.23,
             lon:123.23
         },
