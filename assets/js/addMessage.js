@@ -1,7 +1,7 @@
 'use strict'
 const baseUrl = 'https://tommy770221.com/AngelHack/';
 const getSingleMessagesUrl = `${baseUrl}getSingleMessages`;
-const addSingleMessagesUrl = `${baseUrl}getSingleMessages`;
+const addSingleMessagesUrl = `${baseUrl}addSingleMessages`;
 const getAllMessageUrl = `${baseUrl}getAllMessages`;
 const addAllMessageUrl = `${baseUrl}addAllMessages`;
 var SingleMessageTimer = {};
@@ -33,8 +33,8 @@ function messageToSingle(){
         url:addSingleMessagesUrl,
         type: 'POST',
         data: {
-            fromEmail:"me@gmail.com",
-            toEmail:"yuanyu90221@gmail.com",
+            fromEmail:window.emailContent,
+            toEmail:"tommy770221@hotmail.com",
             message:$('#btn-input').text(),
             lon: 12.2,
             lat: 13.5  
