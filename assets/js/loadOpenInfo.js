@@ -17,6 +17,7 @@ var keySearch =[
 $(document).ready(function(){
    parseQuery();
    getGEOLocation();
+   
 });
 
 function parseQuery(){
@@ -34,9 +35,9 @@ function getGEOLocation(){
     initialLoctaion = {lat: Number(latitude),lng: Number(longitude)};
     mark1 = new google.maps.Marker({
       position: initialLoctaion,
-      map: map      
+      map: window.map      
     });
-    map.setCenter(initialLoctaion);
+    window.map.setCenter(initialLoctaion);
   }
    // error function
   function error(){
@@ -53,8 +54,8 @@ function getGEOLocation(){
 function setMark(location, map){
   mark1 = new google.maps.Marker({
     position: location,
-    map: map
+    map: window.map
   });
-  map.setCenter(location);
+  window.map.setCenter(location);
 }
 
