@@ -8,7 +8,7 @@ function getParameter(){
           tmp = item.split("=");
         //   if (tmp[0] === parameterName)
           var key = tmp[0], name = tmp[1]; 
-          result.push({key:name});  
+          result.push({key:key, name:name});  
             // decodeURIComponent(tmp[1]);
         });
     return result;
