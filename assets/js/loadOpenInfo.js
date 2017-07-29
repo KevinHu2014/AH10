@@ -10,7 +10,6 @@ function getParameter(){
           var key = tmp[0], name = tmp[1]; 
           result.push({key:name});  
             // decodeURIComponent(tmp[1]);
-
         });
     return result;
 }
