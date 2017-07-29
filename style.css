@@ -9,6 +9,9 @@
 #nav {
   max-height: 80vh;
 }
+.navbar {
+  margin-bottom: 0px; 
+}
 
 .navbar-collapse {
   background-image: linear-gradient(90deg, #34AFFF, #29C6CD);
@@ -30,12 +33,7 @@
 
 /* Optional: Makes the sample page fill the window. */
 
-html,
-body {
- height: 100%;
- margin: 0;
- padding: 0;
-}
+
 
 .container-fluid {
     padding: 0px;
