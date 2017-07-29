@@ -24,7 +24,7 @@ var keySearch =["as",
    "zip"];
 
 $(document).ready(function(){
-    console.log(window.location.search.substring(1));
+    console.log(window.location);
 //    parseQuery();
 });
 
