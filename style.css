@@ -6,7 +6,7 @@
  /*box-sizing: border-box;*/
 }
 #nav {
-  max-height: 90vh;
+  max-height: 80vh;
 }
 
 @media (max-width: 767px) {
