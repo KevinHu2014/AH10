@@ -1,0 +1,32 @@
+/* element that contains the map. */
+
+#map {
+ /*height: 400px;*/
+ height: 90vh;
+ /*box-sizing: border-box;*/
+}
+#nav {
+  max-height: 90vh;
+}
+
+@media (max-width: 767px) {
+  #map {
+   /*height: 400px;*/
+   height: 55vh;
+   /*box-sizing: border-box;*/
+  }
+  #nav {
+    max-height: 30vh;
+  }
+}
+
+
+
+/* Optional: Makes the sample page fill the window. */
+
+html,
+body {
+ height: 100%;
+ margin: 0;
+ padding: 0;
+}
