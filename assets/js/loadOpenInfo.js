@@ -11,21 +11,39 @@ var initialLoctaion = {};
 var keySearch =[
     "memberCondition",
    "lat",
-   "lon" 
+   "lon",
+   "email" 
 ];
-
+var chatList = [];
 $(document).ready(function(){
    parseQuery();
-   getGEOLocation();
-   
+   getGEOLocation();   
 });
-
+window.emailContent = "";
+var currentUserObj = {};
 function parseQuery(){
     keySearch.forEach(function(key){
         console.log(key, getParameter(key));
+        currentUserObj.key = getParameter(key);
     });
+    window.emailContent = currentUserObj.email;
+    getChatList();
 }
-
+let baseUrl = 'https://tommy770221.com/AngelHack/';
+const GetUserLocURL = `${baseUrl}queryUserLoc`;
+function getChatList() {
+  $.ajax({
+    method: 'GET',
+    url: GetUserLocURL,
+    data: {id: currentUserObj.memberCondition},
+    success: function(data){
+      console.log(data);
+    },
+    error: function(err){
+      console.log(err);
+    }
+  })
+}
 function getGEOLocation(){
     initialLoctaion = taipei;
     // successful function
