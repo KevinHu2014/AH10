@@ -262,21 +262,31 @@ function addAllMessages(){
         }
     });
 }
-
+let males = [
+"https://adminlte.io/themes/AdminLTE/dist/img/user1-128x128.jpg",
+"https://adminlte.io/themes/AdminLTE/dist/img/user8-128x128.jpg",
+"https://adminlte.io/themes/AdminLTE/dist/img/user6-128x128.jpg"
+];
+let females = [
+"https://adminlte.io/themes/AdminLTE/dist/img/user5-128x128.jpg",
+"https://adminlte.io/themes/AdminLTE/dist/img/user7-128x128.jpg"];
 // fill in media
 function fillInMedia(medias){
   medias.forEach(function(media){
+      let numberMale = Math.floor(Math.random()*2) + 1;
+      let numberFeMale = Math.floor(Math.random()*1) + 1;
+      let thumnailurl = (media.gender==='male')? males[numberMale]:females[numberFeMale];
       $('#nav').append(`
         <div class="media">
             <div class="media-left">
                 <a href="#">
-                    <img class="media-object img-circle" src="" alt="...">
+                    <img class="media-object img-circle" src="${thumnailurl}" alt="...">
                 </a>
             </div>
             <div class="media-body">
                 <h4 class="media-heading">${media.name}</h4>
                 <h5>Gender:<small>${media.gender}</small></h5>
-                <h4>lang:${media}</h4>
+                <h4>lang:${media.locale}</h4>
             </div>
             <div class="media-right">
                 <br>
