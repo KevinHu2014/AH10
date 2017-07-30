@@ -251,7 +251,7 @@ function setMark(location, map){
 const addAllMessageUrl = `${baseUrl}addAllMessages`;
 //新增多人連線
 function addAllMessages(){
-    let text= $('#comment').text();
+    let text= $('#comment').val();
     $.ajax({
         url:addAllMessageUrl,
         type:'POST',

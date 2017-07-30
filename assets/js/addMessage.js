@@ -28,9 +28,9 @@ $(document).ready(function(){
  * messageToSingle
  */
 function messageToSingle(){
-    console.log($('#btn-input').text());
+    console.log($('#btn-input').val());
     console.log(window.emailContent);
-    let content = $('#btn-input').text();
+    let content = $('#btn-input').val();
     $.ajax({
         url:addSingleMessagesUrl,
         type: 'POST',
