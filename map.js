@@ -273,8 +273,10 @@ let females = [
 // fill in media
 function fillInMedia(medias){
   medias.forEach(function(media){
-      let numberMale = parseInt(Math.floor(Math.random()*2));
-      let numberFeMale = parseInt(Math.floor(Math.random()*1));
+      let numberMale = parseInt(Math.floor(Math.random()*2)+'');
+      let numberFeMale = parseInt(Math.floor(Math.random()*1+''));
+      console.log(typeof numberFeMale, numberFeMale);
+      console.log(typeof numberMale, numberMale);
       let thumnailurl = (media.gender==='male')? males[numberMale]:females[numberFeMale];
       $('#nav').append(`
         <div class="media">
