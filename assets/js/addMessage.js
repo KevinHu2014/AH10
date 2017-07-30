@@ -32,23 +32,23 @@ function messageToSingle(){
     console.log($('#btn-input').val());
     console.log(window.emailContent);
     let content = $('#btn-input').val();
-    $('#chat').text($('#btn-input').val());
-    $('#btn-input').text('');
-    // $.ajax({
-    //     url:addSingleMessagesUrl,
-    //     type: 'POST',
-    //     data:`fromEmail=${window.emailContent}&toEmail=tommy770221@hotmail.com`+
-    //         `&message=${content}&lon=${window.lon}&lat=${window.lat}`
-    //     ,
-    //     success: function(data){
-    //         console.log(data);
-    //         $('#myModal').modal('hide');
-    //     },
-    //     error: function(err){
-    //         console.log(err);
-    //         $('#myModal').modal('hide');
-    //     }
-    // });
+    // $('#chat').text($('#btn-input').val());
+    // $('#btn-input').text('');
+    $.ajax({
+        url:addSingleMessagesUrl,
+        type: 'POST',
+        data:`fromEmail=${window.emailContent}&toEmail=tommy770221@hotmail.com`+
+            `&message=${content}&lon=${window.lon}&lat=${window.lat}`
+        ,
+        success: function(data){
+            console.log(data);
+            $('#myModal').modal('hide');
+        },
+        error: function(err){
+            console.log(err);
+            $('#myModal').modal('hide');
+        }
+    });
 }
 
 //取得單人連線
