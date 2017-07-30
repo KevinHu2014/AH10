@@ -183,14 +183,14 @@ function parseQuery(){
         currentUserObj.key = getParameter(key);
     });
     window.emailContent = currentUserObj.email;
-    getChatList();
+    getChatList(currentUserObj.email);
 }
 let baseUrl = 'https://tommy770221.com/AngelHack/';
 const GetUserLocURL = `${baseUrl}queryUserLoc`;
-function getChatList() {
+function getChatList(id) {
   $.ajax({
     method: 'GET',
-    url: GetUserLocURL+"?id="+currentUserObj.memberCondition,
+    url: GetUserLocURL+"?id="+id,
     // data: {id+currentUserObj.memberCondition},
     success: function(data){
       console.log(data);
