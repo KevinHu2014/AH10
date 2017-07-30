@@ -30,16 +30,13 @@ $(document).ready(function(){
 function messageToSingle(){
     console.log($('#btn-input').text());
     console.log(window.emailContent);
+    let content = $('#btn-input').text();
     $.ajax({
         url:addSingleMessagesUrl,
         type: 'POST',
-        data: {
-            fromEmail:window.emailContent,
-            toEmail:"tommy770221@hotmail.com",
-            message:$('#btn-input').text(),
-            lon: `${window.lon}`,
-            lat: `${window.lat}`  
-        },
+        data:`?fromEmail=${window.emailContent}&toEmail=tommy770221@hotmail.com`+
+            `&message=${content}&lon=${window.lon}&lat=${window.lat}`
+        ,
         success: function(data){
             console.log(data);
             $('#myModal').modal('hide');
@@ -57,10 +54,8 @@ function getSingleMessages(){
     $.ajax({
         url:getSingleMessagesUrl,
         type: 'GET',
-        data: {
-            fromEmail:"yuanyu_90221@hotmail.com",
-            toEmail:"tommy770221g@hotmail.com"
-        },
+        data:`?fromEmail=${window.emailContent}&toEmail=tommy770221g@hotmail.com`
+        ,
         success: function(data){
             console.log(data);
             if(data){
@@ -79,9 +74,8 @@ function getAllMessages(){
     $.ajax({
         url:getAllMessageUrl,
         type:'GET',
-        data: {
-            fromEmail:"yuanyu_90221@hotmail.com"
-        },
+        data:`?fromEmail=${window.emailContent}` 
+        ,
         success: function(data){
             console.log('multiple:',data);
         },
