@@ -173,7 +173,10 @@ var keySearch =[
 var chatList = [];
 $(document).ready(function(){
    parseQuery();
-   getGEOLocation();   
+   getGEOLocation();
+   $('#sendAllMessages').on('click', function(){
+     addAllMessages();  
+   });   
 });
 window.emailContent = "";
 var currentUserObj = {};
@@ -201,6 +204,10 @@ function getChatList(id) {
     // data: {id+currentUserObj.memberCondition},
     success: function(data){
       console.log(data);
+      data.forEach(function(item){
+          chatList.push(item);
+      });
+      fillInMedia(chatList);
     },
     error: function(err){
       console.log(err);
@@ -239,3 +246,47 @@ function setMark(location, map){
   });
   window.map.setCenter(location);
 }
+
+//新增多人連線
+function addAllMessages(){
+    let text= $('#comment').text();
+    $.ajax({
+        url:addAllMessageUrl,
+        type:'POST',
+        data:`?fromEmail=yuanyu_90221@hotmail.com&message=${text}&lat=10.12&lon=123.23`,
+        success: function(data){
+            console.log('multiple:',data);
+        },
+        error: function(err){
+            console.log(err);
+        }
+    });
+}
+
+// fill in media
+function fillInMedia(medias){
+  medias.forEach(function(media){
+      $('#nav').appendChild(`
+        <div class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object img-circle" src="" alt="...">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">${media.name}</h4>
+                <h5>Gender:<small>${media.gender}</small></h5>
+                <h4>lang:${media}</h4>
+            </div>
+            <div class="media-right">
+                <br>
+                <br>
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+                    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+      `);
+  });
+}
+
