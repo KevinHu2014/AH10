@@ -255,7 +255,7 @@ function addAllMessages(){
     $.ajax({
         url:addAllMessageUrl,
         type:'POST',
-        data:`?fromEmail=${window.emailContent}&message=${text}&lat=${window.lat}&lon=${window.lat}`,
+        data:`fromEmail=${window.emailContent}&message=${text}&lat=${window.lat}&lon=${window.lat}`,
         success: function(data){
             console.log('multiple:',data);
         },
