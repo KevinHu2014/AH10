@@ -1,5 +1,5 @@
 'use strict'
-const baseUrl = 'https://tommy770221.com/AngelHack/';
+// const baseUrl = 'https://tommy770221.com/AngelHack/';
 const getSingleMessagesUrl = `${baseUrl}getSingleMessages`;
 const addSingleMessagesUrl = `${baseUrl}addSingleMessages`;
 const getAllMessageUrl = `${baseUrl}getAllMessages`;
