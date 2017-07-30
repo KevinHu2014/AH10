@@ -11,15 +11,16 @@ $(document).ready(function(){
     //單人聊天傳送訊息
     $('#btn-chat').off('click');
     $('#btn-chat').on('click',function(){
+        
         messageToSingle();
     });
     // 更新單人聊天
-    if(SingleMessageTimer!=={}){
+    if(SingleMessageTimer!={}){
         clearInterval(SingleMessageTimer);
         SingleMessageTimer = setInterval(getSingleMessages, 10000);
     } 
     // 更新多人聊天
-    if(AllMessageTimer!=={}){
+    if(AllMessageTimer!={}){
         clearInterval(AllMessageTimer);
         AllMessageTimer = setInterval(getAllMessages, 10000);
     }
@@ -31,21 +32,23 @@ function messageToSingle(){
     console.log($('#btn-input').val());
     console.log(window.emailContent);
     let content = $('#btn-input').val();
-    $.ajax({
-        url:addSingleMessagesUrl,
-        type: 'POST',
-        data:`fromEmail=${window.emailContent}&toEmail=tommy770221@hotmail.com`+
-            `&message=${content}&lon=${window.lon}&lat=${window.lat}`
-        ,
-        success: function(data){
-            console.log(data);
-            $('#myModal').modal('hide');
-        },
-        error: function(err){
-            console.log(err);
-            $('#myModal').modal('hide');
-        }
-    });
+    $('#chat').text($('#btn-input').val());
+    $('#btn-input').text('');
+    // $.ajax({
+    //     url:addSingleMessagesUrl,
+    //     type: 'POST',
+    //     data:`fromEmail=${window.emailContent}&toEmail=tommy770221@hotmail.com`+
+    //         `&message=${content}&lon=${window.lon}&lat=${window.lat}`
+    //     ,
+    //     success: function(data){
+    //         console.log(data);
+    //         $('#myModal').modal('hide');
+    //     },
+    //     error: function(err){
+    //         console.log(err);
+    //         $('#myModal').modal('hide');
+    //     }
+    // });
 }
 
 //取得單人連線

@@ -252,15 +252,18 @@ const addAllMessageUrl = `${baseUrl}addAllMessages`;
 //新增多人連線
 function addAllMessages(){
     let text= $('#comment').val();
+    console.log(text);
     $.ajax({
         url:addAllMessageUrl,
         type:'POST',
-        data:`fromEmail=yuanyu_90221@hotmail.com&message=${text}&lat=${window.lat}&lon=${window.lat}`,
+        data:`fromEmail=yuanyu_90221@hotmail.com&message=${text}&lat=${window.lat}&lon=${window.lon}`,
         success: function(data){
             console.log('multiple:',data);
+            $('#Modal2All').modal('hide');
         },
         error: function(err){
             console.log(err);
+            $('#Modal2All').modal('hide');
         }
     });
 }
