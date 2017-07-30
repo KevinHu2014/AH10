@@ -37,8 +37,8 @@ function messageToSingle(){
             fromEmail:window.emailContent,
             toEmail:"tommy770221@hotmail.com",
             message:$('#btn-input').text(),
-            lon: 12.2,
-            lat: 13.5  
+            lon: `${window.lon}`,
+            lat: `${window.lat}`  
         },
         success: function(data){
             console.log(data);

@@ -193,6 +193,8 @@ function parseQuery(){
     });
     console.log(currentUserObj.memberCondition);
     window.emailContent = currentUserObj.email;
+    window.lon = currentUserObj.lon;
+    window.lat = currentUserObj.lat;
     getChatList(currentUserObj.memberCondition);
 }
 let baseUrl = 'https://tommy770221.com/AngelHack/';
@@ -253,7 +255,7 @@ function addAllMessages(){
     $.ajax({
         url:addAllMessageUrl,
         type:'POST',
-        data:`?fromEmail=${window.emailContent}&message=${text}&lat=10.12&lon=123.23`,
+        data:`?fromEmail=${window.emailContent}&message=${text}&lat=${window.lat}&lon=${window.lat}`,
         success: function(data){
             console.log('multiple:',data);
         },
@@ -272,9 +274,11 @@ let females = [
 "https://adminlte.io/themes/AdminLTE/dist/img/user7-128x128.jpg"];
 // fill in media
 function fillInMedia(medias){
+  let i = 0;
   medias.forEach(function(media){
       let numberMale = parseInt(Math.floor(Math.random()*2)+'');
       let numberFeMale = parseInt(Math.floor(Math.random()*1+''));
+      let id =   
       console.log(typeof numberFeMale, numberFeMale);
       console.log(typeof numberMale, numberMale);
       let thumnailurl = (media.gender==='male')? males[numberMale]:females[numberFeMale];
@@ -289,6 +293,7 @@ function fillInMedia(medias){
                 <h4 class="media-heading">${media.name}</h4>
                 <h5>Gender:<small>${media.gender}</small></h5>
                 <h4>lang:${media.locale}</h4>
+                <input type="hidden" value="${media.email}" name='email'/>
             </div>
             <div class="media-right">
                 <br>
