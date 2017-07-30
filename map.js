@@ -246,14 +246,14 @@ function setMark(location, map){
   });
   window.map.setCenter(location);
 }
-
+const addAllMessageUrl = `${baseUrl}addAllMessages`;
 //新增多人連線
 function addAllMessages(){
     let text= $('#comment').text();
     $.ajax({
         url:addAllMessageUrl,
         type:'POST',
-        data:`?fromEmail=yuanyu_90221@hotmail.com&message=${text}&lat=10.12&lon=123.23`,
+        data:`?fromEmail=${window.emailContent}&message=${text}&lat=10.12&lon=123.23`,
         success: function(data){
             console.log('multiple:',data);
         },
