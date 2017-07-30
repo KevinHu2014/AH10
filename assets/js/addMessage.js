@@ -95,12 +95,8 @@ function addAllMessages(){
     $.ajax({
         url:addAllMessageUrl,
         type:'POST',
-        data: {
-            fromEmail:"yuanyu_90221@hotmail.com",
-            toEmail:'tommy770221@hotmail.com',
-            lat:10.23,
-            lon:123.23
-        },
+        data:"?fromEmail=yuanyu_90221@hotmail.com&toEmail=tommy770221@hotmail.com&lat=10.12&lon=123.23"
+        ,
         success: function(data){
             console.log('multiple:',data);
         },
