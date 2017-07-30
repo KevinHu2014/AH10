@@ -54,7 +54,7 @@ function getSingleMessages(){
     $.ajax({
         url:getSingleMessagesUrl,
         type: 'GET',
-        data:`fromEmail=${window.emailContent}&toEmail=tommy770221g@hotmail.com`
+        data:`fromEmail=yuanyu_90221@hotmail.com&toEmail=tommy770221g@hotmail.com`
         ,
         success: function(data){
             console.log(data);
@@ -74,7 +74,7 @@ function getAllMessages(){
     $.ajax({
         url:getAllMessageUrl,
         type:'GET',
-        data:`fromEmail=${window.emailContent}` 
+        data:`fromEmail=yuanyu_90221@hotmail.com` 
         ,
         success: function(data){
             console.log('multiple:',data);
