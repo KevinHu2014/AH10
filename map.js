@@ -177,13 +177,20 @@ $(document).ready(function(){
 });
 window.emailContent = "";
 var currentUserObj = {};
+var keySearch =[
+    "memberCondition",
+   "lat",
+   "lon",
+   "email" 
+];
 function parseQuery(){
     keySearch.forEach(function(key){
         console.log(key, getParameter(key));
         currentUserObj.key = getParameter(key);
     });
+    console.log(currentUserObj.memberCondition);
     window.emailContent = currentUserObj.email;
-    getChatList(currentUserObj.email);
+    getChatList(currentUserObj.memberCondition);
 }
 let baseUrl = 'https://tommy770221.com/AngelHack/';
 const GetUserLocURL = `${baseUrl}queryUserLoc`;
