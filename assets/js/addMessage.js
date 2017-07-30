@@ -34,7 +34,7 @@ function messageToSingle(){
     $.ajax({
         url:addSingleMessagesUrl,
         type: 'POST',
-        data:`?fromEmail=${window.emailContent}&toEmail=tommy770221@hotmail.com`+
+        data:`fromEmail=${window.emailContent}&toEmail=tommy770221@hotmail.com`+
             `&message=${content}&lon=${window.lon}&lat=${window.lat}`
         ,
         success: function(data){
@@ -54,7 +54,7 @@ function getSingleMessages(){
     $.ajax({
         url:getSingleMessagesUrl,
         type: 'GET',
-        data:`?fromEmail=${window.emailContent}&toEmail=tommy770221g@hotmail.com`
+        data:`fromEmail=${window.emailContent}&toEmail=tommy770221g@hotmail.com`
         ,
         success: function(data){
             console.log(data);
@@ -74,7 +74,7 @@ function getAllMessages(){
     $.ajax({
         url:getAllMessageUrl,
         type:'GET',
-        data:`?fromEmail=${window.emailContent}` 
+        data:`fromEmail=${window.emailContent}` 
         ,
         success: function(data){
             console.log('multiple:',data);
