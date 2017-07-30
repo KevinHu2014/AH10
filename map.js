@@ -186,7 +186,7 @@ var keySearch =[
 function parseQuery(){
     keySearch.forEach(function(key){
         console.log(key, getParameter(key));
-        currentUserObj.key = getParameter(key);
+        currentUserObj[`${key}`] = getParameter(key);
     });
     console.log(currentUserObj.memberCondition);
     window.emailContent = currentUserObj.email;
