@@ -266,7 +266,7 @@ function addAllMessages(){
 // fill in media
 function fillInMedia(medias){
   medias.forEach(function(media){
-      $('#nav').appendChild(`
+      $('#nav').append(`
         <div class="media">
             <div class="media-left">
                 <a href="#">
