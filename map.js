@@ -168,15 +168,15 @@ var keySearch =[
     "memberCondition",
    "lat",
    "lon",
-   "email" 
+   "email"
 ];
 var chatList = [];
 $(document).ready(function(){
    parseQuery();
    getGEOLocation();
    $('#sendAllMessages').on('click', function(){
-     addAllMessages();  
-   });   
+     addAllMessages();
+   });
 });
 window.emailContent = "";
 var currentUserObj = {};
@@ -184,7 +184,7 @@ var keySearch =[
     "memberCondition",
    "lat",
    "lon",
-   "email" 
+   "email"
 ];
 function parseQuery(){
     keySearch.forEach(function(key){
@@ -225,14 +225,14 @@ function getGEOLocation(){
     initialLoctaion = {lat: Number(latitude),lng: Number(longitude)};
     mark1 = new google.maps.Marker({
       position: initialLoctaion,
-      map: window.map      
+      map: window.map
     });
     window.map.setCenter(initialLoctaion);
   }
    // error function
   function error(){
     console.log('default loc');
-    
+
   }
    //如果有geolocation 物件
   if(navigator.geolocation){
@@ -278,7 +278,7 @@ function fillInMedia(medias){
   medias.forEach(function(media){
       let numberMale = parseInt(Math.floor(Math.random()*2)+'');
       let numberFeMale = parseInt(Math.floor(Math.random()*1+''));
-      let id =   
+
       console.log(typeof numberFeMale, numberFeMale);
       console.log(typeof numberMale, numberMale);
       let thumnailurl = (media.gender==='male')? males[numberMale]:females[numberFeMale];
@@ -286,7 +286,7 @@ function fillInMedia(medias){
         <div class="media">
             <div class="media-left">
                 <a href="#">
-                    <img class="media-object img-circle" src="${thumnailurl}" style="height:64px;width:64px" alt="...">
+                    <img class="media-object img-circle" src="${males[i]}" style="height:64px;width:64px" alt="...">
                 </a>
             </div>
             <div class="media-body">
@@ -304,6 +304,12 @@ function fillInMedia(medias){
             </div>
         </div>
       `);
+      i++;
   });
 }
 
+function clickhandle(){
+  document.getElementById('test').style.visibility = 'visible';
+  document.getElementById('btn-input').value = '';
+
+}
