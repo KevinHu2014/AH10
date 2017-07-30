@@ -282,7 +282,7 @@ function fillInMedia(medias){
         <div class="media">
             <div class="media-left">
                 <a href="#">
-                    <img class="media-object img-circle" src="${thumnailurl}" alt="...">
+                    <img class="media-object img-circle" src="${thumnailurl}" style="height:64px;width:64px" alt="...">
                 </a>
             </div>
             <div class="media-body">
