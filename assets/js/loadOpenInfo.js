@@ -1,5 +1,5 @@
-// 'use strict'
-// const taipei = {lat: 25.09108, lng: 121.5598};
+// // 'use strict'
+// var taipei = {lat: 25.09108, lng: 121.5598};
 // function getParameter(key){
 //     var result = [],
 //         tmp = [];
@@ -12,12 +12,12 @@
 //     "memberCondition",
 //    "lat",
 //    "lon",
-//    "email" 
+//    "email"
 // ];
 // var chatList = [];
 // $(document).ready(function(){
 //    parseQuery();
-//    getGEOLocation();   
+//    getGEOLocation();
 // });
 // window.emailContent = "";
 // var currentUserObj = {};
@@ -29,8 +29,8 @@
 //     window.emailContent = currentUserObj.email;
 //     getChatList(currentUserObj.memberCondition);
 // }
-// let baseUrl = 'https://tommy770221.com/AngelHack/';
-// const GetUserLocURL = `${baseUrl}queryUserLoc`;
+// var baseUrl = 'https://tommy770221.com/AngelHack/';
+// var GetUserLocURL = baseUrl+"queryUserLoc";
 // function getChatList(id) {
 //   $.ajax({
 //     method: 'GET',
@@ -53,21 +53,21 @@
 //     initialLoctaion = {lat: Number(latitude),lng: Number(longitude)};
 //     mark1 = new google.maps.Marker({
 //       position: initialLoctaion,
-//       map: window.map      
+//       map: window.map
 //     });
 //     window.map.setCenter(initialLoctaion);
 //   }
 //    // error function
 //   function error(){
 //     console.log('default loc');
-    
+//
 //   }
 //    //如果有geolocation 物件
 //   if(navigator.geolocation){
 //     navigator.geolocation.getCurrentPosition(success, error);
 //   }
 // }
-
+//
 // // 設定Marker1
 // function setMark(location, map){
 //   mark1 = new google.maps.Marker({
@@ -76,4 +76,4 @@
 //   });
 //   window.map.setCenter(location);
 // }
-
+//

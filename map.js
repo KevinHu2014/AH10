@@ -189,7 +189,7 @@ var keySearch =[
 function parseQuery(){
     keySearch.forEach(function(key){
         console.log(key, getParameter(key));
-        currentUserObj[`${key}`] = getParameter(key);
+        currentUserObj[key] = getParameter(key);
     });
     console.log(currentUserObj.memberCondition);
     window.emailContent = currentUserObj.email;
@@ -197,8 +197,8 @@ function parseQuery(){
     window.lat = currentUserObj.lat;
     getChatList(currentUserObj.memberCondition);
 }
-let baseUrl = 'https://tommy770221.com/AngelHack/';
-const GetUserLocURL = `${baseUrl}queryUserLoc`;
+var baseUrl = 'https://tommy770221.com/AngelHack/';
+var GetUserLocURL = baseUrl+"queryUserLoc";
 function getChatList(id) {
   $.ajax({
     method: 'GET',
@@ -220,9 +220,10 @@ function getGEOLocation(){
     initialLoctaion = taipei;
     // successful function
   function success(position){
-    let {latitude, longitude} = position.coords;
-    console.log(latitude, longitude);
-    initialLoctaion = {lat: Number(latitude),lng: Number(longitude)};
+      var coordinationArray=[];
+      let {longitude ,latitude} = position.coords;
+    console.log(longitude , latitude);
+    initialLoctaion = {lat: Number(longitude ),lng: Number(latitude)};
     mark1 = new google.maps.Marker({
       position: initialLoctaion,
       map: window.map      
@@ -248,40 +249,41 @@ function setMark(location, map){
   });
   window.map.setCenter(location);
 }
-const addAllMessageUrl = `${baseUrl}addAllMessages`;
+var addAllMessageUrl = baseUrl+"addAllMessages";
 //新增多人連線
-function addAllMessages(){
-    let text= $('#comment').val();
-    $.ajax({
-        url:addAllMessageUrl,
-        type:'POST',
-        data:`fromEmail=${window.emailContent}&message=${text}&lat=${window.lat}&lon=${window.lat}`,
-        success: function(data){
-            console.log('multiple:',data);
-        },
-        error: function(err){
-            console.log(err);
-        }
-    });
-}
-let males = [
+// function addAllMessages(){
+//     var text= $('#comment').val();
+//     $.ajax({
+//         url:addAllMessageUrl,
+//         type:'POST',
+//         data:"fromEmail="+window.emailContent+"&message="+text+"&lat="+window.lat+"&lon="+window.lon,
+//         success: function(data){
+//             console.log('multiple:',data);
+//             $(".modal-dialog").css('display','none');
+//         },
+//         error: function(err){
+//             console.log(err);
+//         }
+//     });
+// }
+var males = [
 "https://adminlte.io/themes/AdminLTE/dist/img/user1-128x128.jpg",
 "https://adminlte.io/themes/AdminLTE/dist/img/user8-128x128.jpg",
 "https://adminlte.io/themes/AdminLTE/dist/img/user6-128x128.jpg"
 ];
-let females = [
+var females = [
 "https://adminlte.io/themes/AdminLTE/dist/img/user5-128x128.jpg",
 "https://adminlte.io/themes/AdminLTE/dist/img/user7-128x128.jpg"];
 // fill in media
 function fillInMedia(medias){
-  let i = 0;
+
   medias.forEach(function(media){
-      let numberMale = parseInt(Math.floor(Math.random()*2)+'');
-      let numberFeMale = parseInt(Math.floor(Math.random()*1+''));
-      let id =   
+      var numberMale = parseInt(Math.floor(Math.random()*2));
+      var numberFeMale = parseInt(Math.floor(Math.random()*1));
+
       console.log(typeof numberFeMale, numberFeMale);
       console.log(typeof numberMale, numberMale);
-      let thumnailurl = (media.gender==='male')? males[numberMale]:females[numberFeMale];
+      var thumnailurl = (media.gender==='male')? males[numberMale]:females[numberFeMale];
       $('#nav').append(`
         <div class="media">
             <div class="media-left">
