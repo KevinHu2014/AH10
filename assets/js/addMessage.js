@@ -127,12 +127,17 @@ function getSingleMessages(x){
 //取得多人連線
 function getAllMessages(){
     console.log('getAllMessages');
+    $('#allMessagesContent').empty();
     $.ajax({
         url:getAllMessageUrl,
         type:'GET',
         data:"fromEmail="+window.emailContent,
         success: function(data){
             console.log('multiple:',data);
+            for(var i=0;i<data.length;i++){
+                var message=data[i]
+                $('#allMessagesContent').append(`<p>`+message.fromEmail+" : "+message.message+`   `+message.createDate+`</p>`);
+            }
           //  $('#Modal2All').modal('hide');
 
         },
@@ -143,12 +148,18 @@ function getAllMessages(){
 }
 // //新增多人連線
 function addAllMessages(){
+    $('.chat').empty();
+    var comment=$('#comment').val();
+   // var commentText=$('#comment').text();
+    console.log(comment);
+   // console.log(commentText);
     $.ajax({
         url:addAllMessageUrl,
         type:'POST',
-        data:"fromEmail="+window.emailContent+"&message="+"&lat="+window.lon+"&lon="+window.lat
+        data:"fromEmail="+window.emailContent+"&message="+comment+"&lat="+window.lon+"&lon="+window.lat
         ,
         success: function(data){
+            $('#Modal2All').modal('hide');
             console.log('multiple:',data);
         },
         error: function(err){
