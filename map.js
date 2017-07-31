@@ -1,8 +1,8 @@
 function initMap() {
   console.log('fsdf');
   var uluru = {
-    lat: -25.363,
-    lng: 131.044
+    lat: 25.363,
+    lng: 121.044
   };
 
   var mapStyle = [
@@ -96,46 +96,17 @@ function initMap() {
     styles: mapStyle
   });
 
-  var contentString = '<div id="content">' +
-    '<div id="siteNotice">' +
-    '</div>' +
-    '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
-    '<div id="bodyContent">' +
-    '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-    'sandstone rock formation in the southern part of the ' +
-    'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) ' +
-    'south west of the nearest large town, Alice Springs; 450&#160;km ' +
-    '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major ' +
-    'features of the Uluru - Kata Tjuta National Park. Uluru is ' +
-    'sacred to the Pitjantjatjara and Yankunytjatjara, the ' +
-    'Aboriginal people of the area. It has many springs, waterholes, ' +
-    'rock caves and ancient paintings. Uluru is listed as a World ' +
-    'Heritage Site.</p>' +
-    '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
-    'https://en.wikipedia.org/w/index.php?title=Uluru</a> ' +
-    '(last visited June 22, 2009).</p>' +
-    '</div>' +
-    '</div>';
-
-  var infowindow = new google.maps.InfoWindow({
-    content: contentString,
-    maxWidth: 200
-  });
 
   var image = {
 
           url: 'https://s4.postimg.org/onf9j7sj1/2017-07-29_12.11.53.png',
-
           // This marker is 20 pixels wide by 32 pixels high.
           // （寬， 高）
           size: new google.maps.Size(128, 128),
-
           // The origin for this image is (0, 0).
           //Marker的 起始點  （左上角座標）
           origin: new google.maps.Point(0, 0),
-
           // The anchor for this image is the base of the flagpole at (0, 32).
-
           anchor: new google.maps.Point(0, 50)
 
         };
@@ -155,7 +126,7 @@ $(document).ready(function(){
     $('[data-toggle="popover"]').popover();
 });
 
-const taipei = {lat: 25.09108, lng: 121.5598};
+var taipei = {lat: 25.09108, lng: 121.5598};
 function getParameter(key){
     var result = [],
         tmp = [];
@@ -278,8 +249,8 @@ var females = [
 function fillInMedia(medias){
 
   medias.forEach(function(media){
-      var numberMale = parseInt(Math.floor(Math.random()*2));
-      var numberFeMale = parseInt(Math.floor(Math.random()*1));
+      var numberMale = parseInt(Math.floor(Math.random()*3))+1;
+      var numberFeMale = parseInt(Math.floor(Math.random()*2))+1;
 
       console.log(typeof numberFeMale, numberFeMale);
       console.log(typeof numberMale, numberMale);
@@ -295,13 +266,13 @@ function fillInMedia(medias){
                 <h4 class="media-heading">${media.name}</h4>
                 <h5>Gender:<small>${media.gender}</small></h5>
                 <h4>lang:${media.locale}</h4>
-                <input type="hidden" value="${media.email}" name='email'/>
+                <input id="singleChatEmail" type="hidden" value="${media.email}" name='email'/>
             </div>
             <div class="media-right">
                 <br>
                 <br>
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
-                    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                <button type="button" id="changeMyModal" onclick="getSingleMessages('${media.email}')" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+                    <span class="glyphicon glyphicon-comment" aria-hidden="true"  ></span>
                 </button>
             </div>
         </div>
