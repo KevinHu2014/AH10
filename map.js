@@ -1,3 +1,4 @@
+var mark1 = {};
 function initMap() {
   console.log('fsdf');
   var uluru = {
@@ -118,9 +119,9 @@ function initMap() {
     icon: image,
 
   });
-  marker.addListener('click', function() {
-    infowindow.open(map, marker);
-  });
+//   marker.addListener('click', function() {
+//     infowindow.open(map, marker);
+//   });
 }
 $(document).ready(function(){
     $('[data-toggle="popover"]').popover();
@@ -133,7 +134,7 @@ function getParameter(key){
     var url = new URL(window.location.href);
     return  url.searchParams.get(key);
 }
-var mark1 = {};
+
 var initialLoctaion = {};
 var keySearch =[
     "memberCondition",
@@ -204,7 +205,11 @@ function getGEOLocation(){
    // error function
   function error(){
     console.log('default loc');
-    
+    mark1 = new google.maps.Marker({
+      position: initialLoctaion,
+      map: window.map      
+    });
+    window.map.setCenter(initialLoctaion);
   }
    //如果有geolocation 物件
   if(navigator.geolocation){
@@ -282,3 +287,26 @@ function fillInMedia(medias){
   });
 }
 
+// 新增個人發話到 messageWindow
+function addMessageToMarker(message){
+  console.log('addMessageToMarker', message);
+  var contentString =`<div id="content">`+
+      `<div id="bodyContent">`+
+      `<p>${message}</p>`+
+      `</div>`+
+      `</div>`;
+  console.log(mark1);
+  var infowindow = new google.maps.InfoWindow({
+    content: contentString
+  });
+  
+  infowindow.open(map,mark1);
+//   setCallBackFor(mark1, function(){
+//       console.log(mark1);
+//       infowindow.open(map, mark1);
+//   });
+}
+
+// function setCallBackFor(mark, callback){
+//     mark.addListener('click', callback);
+// }

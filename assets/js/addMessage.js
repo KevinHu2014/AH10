@@ -194,10 +194,11 @@ function addAllMessages(){
         type:'POST',
         data:"fromEmail="+window.emailContent+"&message="+comment+"&lat="+window.lon+"&lon="+window.lat
         ,
-        success: function(data){
-            $('#comment').val('');
+        success: function(data){           
             $('#Modal2All').modal('hide');
             console.log('multiple:',data);
+            addMessageToMarker(comment);
+             $('#comment').val('');
         },
         error: function(err){
             $('#comment').val('');
