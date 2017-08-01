@@ -1,8 +1,9 @@
+var mark1 = {};
 function initMap() {
   console.log('fsdf');
   var uluru = {
-    lat: -25.363,
-    lng: 131.044
+    lat: 25.363,
+    lng: 121.044
   };
 
   var mapStyle = [
@@ -96,46 +97,17 @@ function initMap() {
     styles: mapStyle
   });
 
-  var contentString = '<div id="content">' +
-    '<div id="siteNotice">' +
-    '</div>' +
-    '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
-    '<div id="bodyContent">' +
-    '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-    'sandstone rock formation in the southern part of the ' +
-    'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) ' +
-    'south west of the nearest large town, Alice Springs; 450&#160;km ' +
-    '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major ' +
-    'features of the Uluru - Kata Tjuta National Park. Uluru is ' +
-    'sacred to the Pitjantjatjara and Yankunytjatjara, the ' +
-    'Aboriginal people of the area. It has many springs, waterholes, ' +
-    'rock caves and ancient paintings. Uluru is listed as a World ' +
-    'Heritage Site.</p>' +
-    '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
-    'https://en.wikipedia.org/w/index.php?title=Uluru</a> ' +
-    '(last visited June 22, 2009).</p>' +
-    '</div>' +
-    '</div>';
-
-  var infowindow = new google.maps.InfoWindow({
-    content: contentString,
-    maxWidth: 200
-  });
 
   var image = {
 
           url: 'https://s4.postimg.org/onf9j7sj1/2017-07-29_12.11.53.png',
-
           // This marker is 20 pixels wide by 32 pixels high.
           // （寬， 高）
           size: new google.maps.Size(128, 128),
-
           // The origin for this image is (0, 0).
           //Marker的 起始點  （左上角座標）
           origin: new google.maps.Point(0, 0),
-
           // The anchor for this image is the base of the flagpole at (0, 32).
-
           anchor: new google.maps.Point(0, 50)
 
         };
@@ -147,22 +119,22 @@ function initMap() {
     icon: image,
 
   });
-  marker.addListener('click', function() {
-    infowindow.open(map, marker);
-  });
+//   marker.addListener('click', function() {
+//     infowindow.open(map, marker);
+//   });
 }
 $(document).ready(function(){
     $('[data-toggle="popover"]').popover();
 });
 
-const taipei = {lat: 25.09108, lng: 121.5598};
+var taipei = {lat: 25.09108, lng: 121.5598};
 function getParameter(key){
     var result = [],
         tmp = [];
     var url = new URL(window.location.href);
     return  url.searchParams.get(key);
 }
-var mark1 = {};
+
 var initialLoctaion = {};
 var keySearch =[
     "memberCondition",
@@ -189,7 +161,7 @@ var keySearch =[
 function parseQuery(){
     keySearch.forEach(function(key){
         console.log(key, getParameter(key));
-        currentUserObj[`${key}`] = getParameter(key);
+        currentUserObj[key] = getParameter(key);
     });
     console.log(currentUserObj.memberCondition);
     window.emailContent = currentUserObj.email;
@@ -197,8 +169,8 @@ function parseQuery(){
     window.lat = currentUserObj.lat;
     getChatList(currentUserObj.memberCondition);
 }
-let baseUrl = 'https://tommy770221.com/AngelHack/';
-const GetUserLocURL = `${baseUrl}queryUserLoc`;
+var baseUrl = 'https://tommy770221.com/AngelHack/';
+var GetUserLocURL = baseUrl+"queryUserLoc";
 function getChatList(id) {
   $.ajax({
     method: 'GET',
@@ -220,9 +192,10 @@ function getGEOLocation(){
     initialLoctaion = taipei;
     // successful function
   function success(position){
-    let {latitude, longitude} = position.coords;
-    console.log(latitude, longitude);
-    initialLoctaion = {lat: Number(latitude),lng: Number(longitude)};
+      var coordinationArray=[];
+      let {longitude ,latitude} = position.coords;
+    console.log(longitude , latitude);
+    initialLoctaion = {lat: Number(longitude ),lng: Number(latitude)};
     mark1 = new google.maps.Marker({
       position: initialLoctaion,
       map: window.map
@@ -232,7 +205,15 @@ function getGEOLocation(){
    // error function
   function error(){
     console.log('default loc');
+<<<<<<< HEAD
 
+=======
+    mark1 = new google.maps.Marker({
+      position: initialLoctaion,
+      map: window.map      
+    });
+    window.map.setCenter(initialLoctaion);
+>>>>>>> 76d8447b14f7a81d42dc8489a2891075c758ae10
   }
    //如果有geolocation 物件
   if(navigator.geolocation){
@@ -240,48 +221,57 @@ function getGEOLocation(){
   }
 }
 
-// 設定Marker1
+// 設定Marker
 function setMark(location, map){
-  mark1 = new google.maps.Marker({
+   new google.maps.Marker({
     position: location,
     map: window.map
   });
-  window.map.setCenter(location);
+//   window.map.setCenter(location);
 }
-const addAllMessageUrl = `${baseUrl}addAllMessages`;
+var addAllMessageUrl = baseUrl+"addAllMessages";
 //新增多人連線
-function addAllMessages(){
-    let text= $('#comment').val();
-    $.ajax({
-        url:addAllMessageUrl,
-        type:'POST',
-        data:`fromEmail=yuanyu_90221@hotmail.com&message=${text}&lat=${window.lat}&lon=${window.lat}`,
-        success: function(data){
-            console.log('multiple:',data);
-        },
-        error: function(err){
-            console.log(err);
-        }
-    });
-}
-let males = [
+// function addAllMessages(){
+//     var text= $('#comment').val();
+//     $.ajax({
+//         url:addAllMessageUrl,
+//         type:'POST',
+//         data:"fromEmail="+window.emailContent+"&message="+text+"&lat="+window.lat+"&lon="+window.lon,
+//         success: function(data){
+//             console.log('multiple:',data);
+//             $(".modal-dialog").css('display','none');
+//         },
+//         error: function(err){
+//             console.log(err);
+//         }
+//     });
+// }
+var males = [
 "https://adminlte.io/themes/AdminLTE/dist/img/user1-128x128.jpg",
 "https://adminlte.io/themes/AdminLTE/dist/img/user8-128x128.jpg",
 "https://adminlte.io/themes/AdminLTE/dist/img/user6-128x128.jpg"
 ];
-let females = [
+var females = [
 "https://adminlte.io/themes/AdminLTE/dist/img/user5-128x128.jpg",
 "https://adminlte.io/themes/AdminLTE/dist/img/user7-128x128.jpg"];
 // fill in media
 function fillInMedia(medias){
-  let i = 0;
+
   medias.forEach(function(media){
+<<<<<<< HEAD
       let numberMale = parseInt(Math.floor(Math.random()*2)+'');
       let numberFeMale = parseInt(Math.floor(Math.random()*1+''));
 
+=======
+      var numberMale = parseInt(Math.floor(Math.random()*males.length));
+      var numberFeMale = parseInt(Math.floor(Math.random()*females.length));
+      
+>>>>>>> 76d8447b14f7a81d42dc8489a2891075c758ae10
       console.log(typeof numberFeMale, numberFeMale);
       console.log(typeof numberMale, numberMale);
-      let thumnailurl = (media.gender==='male')? males[numberMale]:females[numberFeMale];
+      var thumnailurl = (media.gender==='male')? males[numberMale]:females[numberFeMale];
+      let location = {lat: media.lat,lng: media.lon};
+      setMark(location, map);
       $('#nav').append(`
         <div class="media">
             <div class="media-left">
@@ -293,13 +283,13 @@ function fillInMedia(medias){
                 <h4 class="media-heading">${media.name}</h4>
                 <h5>Gender:<small>${media.gender}</small></h5>
                 <h4>lang:${media.locale}</h4>
-                <input type="hidden" value="${media.email}" name='email'/>
+                <input id="singleChatEmail" type="hidden" value="${media.email}" name='email'/>
             </div>
             <div class="media-right">
                 <br>
                 <br>
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
-                    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                <button type="button" id="changeMyModal" onclick="getSingleMessages('${media.email}')" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+                    <span class="glyphicon glyphicon-comment" aria-hidden="true"  ></span>
                 </button>
             </div>
         </div>
@@ -308,8 +298,30 @@ function fillInMedia(medias){
   });
 }
 
+<<<<<<< HEAD
 function clickhandle(){
   document.getElementById('test').style.visibility = 'visible';
   document.getElementById('btn-input').value = '';
 
+=======
+// 新增個人發話到 messageWindow
+function addMessageToMarker(message){
+  console.log('addMessageToMarker', message);
+  var contentString =`<div id="content">`+
+      `<div id="bodyContent">`+
+      `<p>${message}</p>`+
+      `</div>`+
+      `</div>`;
+  console.log(mark1);
+  var infowindow = new google.maps.InfoWindow({
+    content: contentString
+  });
+  
+  infowindow.open(map,mark1);
+
+    mark1.addListener('click', function(){
+        console.log(mark1);
+        infowindow.open(map,mark1);
+    });
+>>>>>>> 76d8447b14f7a81d42dc8489a2891075c758ae10
 }
