@@ -212,13 +212,13 @@ function getGEOLocation(){
   }
 }
 
-// 設定Marker1
+// 設定Marker
 function setMark(location, map){
-  mark1 = new google.maps.Marker({
+   new google.maps.Marker({
     position: location,
     map: window.map
   });
-  window.map.setCenter(location);
+//   window.map.setCenter(location);
 }
 var addAllMessageUrl = baseUrl+"addAllMessages";
 //新增多人連線
@@ -249,12 +249,14 @@ var females = [
 function fillInMedia(medias){
 
   medias.forEach(function(media){
-      var numberMale = parseInt(Math.floor(Math.random()*3))+1;
-      var numberFeMale = parseInt(Math.floor(Math.random()*2))+1;
-
+      var numberMale = parseInt(Math.floor(Math.random()*males.length));
+      var numberFeMale = parseInt(Math.floor(Math.random()*females.length));
+      
       console.log(typeof numberFeMale, numberFeMale);
       console.log(typeof numberMale, numberMale);
       var thumnailurl = (media.gender==='male')? males[numberMale]:females[numberFeMale];
+      let location = {lat: media.lat,lng: media.lon};
+      setMark(location, map);
       $('#nav').append(`
         <div class="media">
             <div class="media-left">
