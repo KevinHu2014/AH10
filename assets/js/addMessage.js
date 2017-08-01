@@ -124,23 +124,49 @@ function getSingleMessages(x){
         }
     });
 }
+var chatAllList = [];
 //取得多人連線
 function getAllMessages(){
-    console.log('getAllMessages');
     $('#allMessagesContent').empty();
+    console.log('getAllMessages');
+    var count = 0;
+    chatAllList = [];
+    // 把再現上的對話都抓出來
+    chatList.forEach(function(chatItem){
+   
     $.ajax({
         url:getAllMessageUrl,
         type:'GET',
-        data:"fromEmail="+window.emailContent,
+        data:"fromEmail="+chatItem.email,
         success: function(data){
             console.log('multiple:',data);
-            for(var i=0;i<data.length;i++){
-                var message=data[i]
+            data.forEach(function(dt){
+                chatAllList.push(dt);
+            });
+            chatAllList.sort(function(first, second){
+                return first.createDate <= second.createDate;
+            });
+              $('#allMessagesContent').empty();
+            fillInPublicField(chatAllList);
+        },
+        error: function(err){
+            console.log(err);
+        }
+    });
+    });
+
+}
+
+function fillInPublicField(data){
+   for(var i=0;i<data.length;i++){
+                var message=data[i];
+                console.log(message);
                 // $('#allMessagesContent').append(`<p>`+message.fromEmail+" : "+message.message+`   `+message.createDate+`</p>`);
                 var chat = searchChatByEmail(message.fromEmail);
                 let time = new Date(message.createDate);
                 let timestamp = time.toLocaleTimeString();
-                let thumnail = searchImageUrl(chat.name);
+                let thumnail = (message.fromEmail === window.emailContent)?"http://placehold.it/50/FA6F57/fff&amp;text=ME"
+                                                                          :"http://placehold.it/50/55C1E7/fff&amp;text=U";
                 $('#allMessagesContent').append(
                 `<div class="left clearfix" style="margin-bottom:10px;">
                     <span class="chat-img pull-left">
@@ -156,15 +182,7 @@ function getAllMessages(){
                     </div>
                 </div>`);
             }
-          //  $('#Modal2All').modal('hide');
-
-        },
-        error: function(err){
-            console.log(err);
-        }
-    });
 }
-
 function searchChatByEmail(email){
     return chatList.find(function(chat){
         return chat.email === email;

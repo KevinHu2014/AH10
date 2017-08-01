@@ -164,6 +164,7 @@ function parseQuery(){
         currentUserObj[key] = getParameter(key);
     });
     console.log(currentUserObj.memberCondition);
+    console.log(currentUserObj.email);
     window.emailContent = currentUserObj.email;
     window.lon = currentUserObj.lon;
     window.lat = currentUserObj.lat;
