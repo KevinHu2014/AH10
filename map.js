@@ -205,15 +205,11 @@ function getGEOLocation(){
    // error function
   function error(){
     console.log('default loc');
-<<<<<<< HEAD
-
-=======
     mark1 = new google.maps.Marker({
       position: initialLoctaion,
-      map: window.map      
+      map: window.map
     });
     window.map.setCenter(initialLoctaion);
->>>>>>> 76d8447b14f7a81d42dc8489a2891075c758ae10
   }
    //如果有geolocation 物件
   if(navigator.geolocation){
@@ -258,15 +254,9 @@ var females = [
 function fillInMedia(medias){
 
   medias.forEach(function(media){
-<<<<<<< HEAD
-      let numberMale = parseInt(Math.floor(Math.random()*2)+'');
-      let numberFeMale = parseInt(Math.floor(Math.random()*1+''));
-
-=======
       var numberMale = parseInt(Math.floor(Math.random()*males.length));
       var numberFeMale = parseInt(Math.floor(Math.random()*females.length));
-      
->>>>>>> 76d8447b14f7a81d42dc8489a2891075c758ae10
+
       console.log(typeof numberFeMale, numberFeMale);
       console.log(typeof numberMale, numberMale);
       var thumnailurl = (media.gender==='male')? males[numberMale]:females[numberFeMale];
@@ -276,7 +266,7 @@ function fillInMedia(medias){
         <div class="media">
             <div class="media-left">
                 <a href="#">
-                    <img class="media-object img-circle" src="${males[i]}" style="height:64px;width:64px" alt="...">
+                    <img class="media-object img-circle" src="${thumnailurl}" style="height:64px;width:64px" alt="...">
                 </a>
             </div>
             <div class="media-body">
@@ -294,16 +284,9 @@ function fillInMedia(medias){
             </div>
         </div>
       `);
-      i++;
   });
 }
 
-<<<<<<< HEAD
-function clickhandle(){
-  document.getElementById('test').style.visibility = 'visible';
-  document.getElementById('btn-input').value = '';
-
-=======
 // 新增個人發話到 messageWindow
 function addMessageToMarker(message){
   console.log('addMessageToMarker', message);
@@ -316,12 +299,11 @@ function addMessageToMarker(message){
   var infowindow = new google.maps.InfoWindow({
     content: contentString
   });
-  
+
   infowindow.open(map,mark1);
 
     mark1.addListener('click', function(){
         console.log(mark1);
         infowindow.open(map,mark1);
     });
->>>>>>> 76d8447b14f7a81d42dc8489a2891075c758ae10
 }
