@@ -140,10 +140,11 @@ function getAllMessages(){
                 var chat = searchChatByEmail(message.fromEmail);
                 let time = new Date(message.createDate);
                 let timestamp = time.toLocaleTimeString();
+                let thumnail = searchImageUrl(chat.name);
                 $('#allMessagesContent').append(
                 `<div class="left clearfix" style="margin-bottom:10px;">
                     <span class="chat-img pull-left">
-                        <img src="http://placehold.it/50/55C1E7/fff&amp;text=U" alt="User Avatar" class="img-circle">
+                        <img src="${thumnail}" alt="User Avatar" class="img-circle" style="height:64px;">
                     </span>
                     <div class="chat-body clearfix">
                         <div class="header">
@@ -169,6 +170,18 @@ function searchChatByEmail(email){
         return chat.email === email;
     });
 }
+
+function searchImageUrl(name){
+    let chatArray = Array.from($('#nav .media .media-body .media-heading'));
+    let url = 'http://placehold.it/50/55C1E7/fff&amp;text=U';
+    let length = chatArray.length;
+    for(let i =0; i < length; i++){
+        if(name === chatArray[i].innerText){
+            return $('#nav .media .media-left img')[i].src;
+        }
+    }
+    return url;
+}
 // //新增多人連線
 function addAllMessages(){
     $('.chat').empty();
@@ -182,10 +195,12 @@ function addAllMessages(){
         data:"fromEmail="+window.emailContent+"&message="+comment+"&lat="+window.lon+"&lon="+window.lat
         ,
         success: function(data){
+            $('#comment').val('');
             $('#Modal2All').modal('hide');
             console.log('multiple:',data);
         },
         error: function(err){
+            $('#comment').val('');
             console.log(err);
         }
     });
