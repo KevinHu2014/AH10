@@ -301,12 +301,9 @@ function addMessageToMarker(message){
   });
   
   infowindow.open(map,mark1);
-//   setCallBackFor(mark1, function(){
-//       console.log(mark1);
-//       infowindow.open(map, mark1);
-//   });
-}
 
-// function setCallBackFor(mark, callback){
-//     mark.addListener('click', callback);
-// }
+    mark1.addListener('click', function(){
+        console.log(mark1);
+        infowindow.open(map,mark1);
+    });
+}
