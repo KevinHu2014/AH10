@@ -71,7 +71,7 @@ function getSingleMessages(x){
                     console.log(data[i]);
                     if(data[i].fromEmail==window.emailContent){
                         $('.chat').append(`<li class="right clearfix"><span class="chat-img pull-right">
-                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle">
+                            <img src="https://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle">
                             </span>
                             <div class="chat-body clearfix">
                             <div class="header">
@@ -85,7 +85,7 @@ function getSingleMessages(x){
                     }else{
 
                         $('.chat').append(` <li class="left clearfix"><span class="chat-img pull-left">
-                                <img src="http://placehold.it/50/55C1E7/fff&amp;text=U" alt="User Avatar" class="img-circle">
+                                <img src="https://placehold.it/50/55C1E7/fff&amp;text=U" alt="User Avatar" class="img-circle">
                             </span>
                                 <div class="chat-body clearfix">
                                     <div class="header">
@@ -165,8 +165,8 @@ function fillInPublicField(data){
                 var chat = searchChatByEmail(message.fromEmail);
                 let time = new Date(message.createDate);
                 let timestamp = time.toLocaleTimeString();
-                let thumnail = (message.fromEmail === window.emailContent)?"http://placehold.it/50/FA6F57/fff&amp;text=ME"
-                                                                          :"http://placehold.it/50/55C1E7/fff&amp;text=U";
+                let thumnail = (message.fromEmail === window.emailContent)?"https://placehold.it/50/FA6F57/fff&amp;text=ME"
+                                                                          :"https://placehold.it/50/55C1E7/fff&amp;text=U";
                 $('#allMessagesContent').append(
                 `<div class="left clearfix" style="margin-bottom:10px;">
                     <span class="chat-img pull-left">
@@ -191,7 +191,7 @@ function searchChatByEmail(email){
 
 function searchImageUrl(name){
     let chatArray = Array.from($('#nav .media .media-body .media-heading'));
-    let url = 'http://placehold.it/50/55C1E7/fff&amp;text=U';
+    let url = 'https://placehold.it/50/55C1E7/fff&amp;text=U';
     let length = chatArray.length;
     for(let i =0; i < length; i++){
         if(name === chatArray[i].innerText){

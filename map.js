@@ -193,10 +193,11 @@ function getGEOLocation(){
     initialLoctaion = taipei;
     // successful function
   function success(position){
-      var coordinationArray=[];
+    //   var coordinationArray=[];
       let {longitude ,latitude} = position.coords;
     console.log(longitude , latitude);
-    initialLoctaion = {lat: Number(longitude ),lng: Number(latitude)};
+    initialLoctaion = {lat: parseFloat(Number(latitude).toFixed(3)),lng:parseFloat(Number(longitude).toFixed(3))};
+    console.log(initialLoctaion); 
     mark1 = new google.maps.Marker({
       position: initialLoctaion,
       map: window.map
@@ -212,6 +213,7 @@ function getGEOLocation(){
     });
     window.map.setCenter(initialLoctaion);
   }
+  
    //如果有geolocation 物件
   if(navigator.geolocation){
     navigator.geolocation.getCurrentPosition(success, error);
@@ -262,6 +264,7 @@ function fillInMedia(medias){
       console.log(typeof numberMale, numberMale);
       var thumnailurl = (media.gender==='male')? males[numberMale]:females[numberFeMale];
       let location = {lat: media.lat,lng: media.lon};
+      console.log(location);
       setMark(location, map);
       $('#nav').append(`
         <div class="media">
